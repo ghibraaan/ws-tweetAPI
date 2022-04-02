@@ -18,11 +18,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/2/tweets/{id}',[\App\Http\Controllers\Wrapper::class,'gettwt']) -> name('gettwt');
-Route::get('/2/users/by/username/{username}', [\App\Http\Controllers\Wrapper::class, 'userby']) -> name('userby');
-Route::get('/2/users/{id}', [\App\Http\Controllers\Wrapper::class, 'userid']) -> name('userid');
-Route::get('/2/users/{id}/followers', [App\Http\Controllers\Wrapper::class, 'followers']) -> name('followers');
-Route::get('/2/users/{id}/liked_tweets', [App\Http\Controllers\Wrapper::class, 'liked']) -> name('liked');
+Route::get('/2/tweets/{id}',[\App\Http\Controllers\Wrapper::class,'gettwt']) -> name('gettwt') -> middleware('npm');
+Route::get('/2/users/by/username/{username}', [\App\Http\Controllers\Wrapper::class, 'userby']) -> name('userby') -> middleware('npm');
+Route::get('/2/users/{id}', [\App\Http\Controllers\Wrapper::class, 'userid']) -> name('userid') -> middleware('npm');
+Route::get('/2/users/{id}/followers', [App\Http\Controllers\Wrapper::class, 'followers']) -> name('followers') -> middleware('npm');
+Route::get('/2/users/{id}/liked_tweets', [App\Http\Controllers\Wrapper::class, 'liked']) -> name('liked') -> middleware('npm');
 Route::get('/user/identitas', function (){
     return [
         'code' => '0',
